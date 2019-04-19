@@ -1,0 +1,117 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<div class="input-group mb-3">
+    <input type="text" class="form-control" [(ngModel)]="city" placeholder="Enter City.." aria-label="Recipient's username" aria-describedby="basic-addon2">
+    <div class="input-group-append">
+      <button class="btn btn-primary " (click)= "Forecast()" type="button">Search</button>
+    </div>
+</div>
+<!--<div *ngIf="weather" class="container">
+    <p class="font-weight-bold text-center display-3 ">{{weather.city.name}}</p>
+  
+  <div class="contanier">
+      <div class="row">
+          
+            <div class="col-sm">
+                Date
+            </div>
+            <div class="col-sm">
+              Curr_temp
+            </div>
+            <div class="col-sm">
+                Min_temp
+            </div>
+            <div class="col-sm">
+                Max_temp
+            </div>
+            <div class="col-sm">
+                Description
+            </div>
+            
+  
+          </div>
+          <br>
+      <div *ngFor = "let i of weather.list">
+    <div class="row">
+          <div class="col-sm">
+              {{i.dt_txt}}
+          </div>
+          <div class="col-sm">
+              {{(i.main.temp-273).toPrecision(4)}}&deg;
+          </div>
+          <div class="col-sm">
+              {{(i.main.temp_min-273).toPrecision(4)}}&deg;
+          </div>
+          <div class="col-sm">
+              {{(i.main.temp_max-273).toPrecision(4)}}&deg;
+          </div>
+          <div class="col-sm">
+              {{i.weather[0].description}}<img src="http://openweathermap.org/img/w/{{weather.list[0].weather[0].icon}}.png">
+          </div>
+
+        </div>
+    </div>
+  </div>
+
+</div>-->
+
+   
+
+
+
+<div *ngIf="a" class="container">
+    <p class="font-weight-bold text-center display-3 ">{{foreWeather[0].cityname}},{{foreWeather[0].country}}</p>
+    <p class=" text-center display-7 ">Pressure : {{foreWeather[0].pressure}} mb</p>
+    <p class="text-center display-7 ">Humidity : {{foreWeather[0].humidity}}%</p>
+    <p class="text-center display-7 ">Wind : {{foreWeather[0].wind}}mph SW</p>
+  <div class="contanier">
+      <div class="row">
+          
+            <div class="col-sm">
+                Date
+            </div>
+            <div class="col-sm">
+              Curr_temp
+            </div>
+            <div class="col-sm">
+                Min_temp
+            </div>
+            <div class="col-sm">
+                Max_temp
+            </div>
+            <div class="col-sm">
+                Description
+            </div>
+            
+          
+          </div>
+          <br>
+      <div *ngFor = "let fw of foreWeather">
+    <div class="row">
+          <div class="col-sm">
+              {{fw.date|date:'fullDate'}}
+          </div>
+          <div class="col-sm">
+              {{(fw.temp-273).toPrecision(4)}}&deg;
+          </div>
+          <div class="col-sm">
+              {{(fw.tempMin-273).toPrecision(4)}}&deg;
+          </div>
+          <div class="col-sm">
+              {{(fw.tempMax-273).toPrecision(4)}}&deg;
+          </div>
+          <div class="col-sm">
+              {{fw.weatherKind}}<img src="http://openweathermap.org/img/w/{{fw.icon}}.png">
+          </div>
+
+        </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
