@@ -10,12 +10,14 @@ import { WeatherService } from "src/app/weather.service";
 import { HttpClientModule } from "@angular/common/http";
 import { HttpModule } from '@angular/http';
 import { FormsModule } from "@angular/forms";
+import { InputComponent } from './input/input.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     CurrentComponent,
-    ForecastComponent
+    ForecastComponent,
+    InputComponent
   ],
   imports: [
     BrowserModule,

@@ -1,15 +1,12 @@
-<div  class="input-group mb-3">
-    <input type="text" class="form-control" [(ngModel)]="city" placeholder="Enter City" aria-label="Recipient's username" aria-describedby="basic-addon2">
-    <div class="input-group-append">
-    <button (click)= "WeatherForecast()" class="btn btn-primary ">Search</button>
-    </div>
-</div>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<app-input ></app-input>
 <div *ngIf="myWeather" class="container">
   <h1>{{myWeather.cityname}},{{myWeather.country}}</h1>
   <h2>{{myWeather.date|date:'full'}}</h2>
   <h2>Pressure : {{myWeather.pressure}} mb</h2>
   <h2>Humidity : {{myWeather.humidity}}%</h2>
-  <h2>Wind : {{myWeather.wind}}mph SW</h2>
+  <h2>Wind : {{myWeather.wind}} mph SW</h2>
   <h2>{{(myWeather.temp-273).toPrecision(4)}}&deg;</h2>
   <div class="img">
      <h3>{{myWeather.weatherKind}}
@@ -20,3 +17,20 @@
   <h4>Min:  {{(myWeather.tempMin-273).toPrecision(4)}}&deg;</h4>
   <h4>Max: {{(myWeather.tempMax-273).toPrecision(4)}}&deg;</h4>
 </div>
+
+<!-- <div *ngIf="a" class="container">
+  <h1>{{wea.city.name}},{{wea.city.country}}</h1>
+  <h2>{{wea.list[0].dt_txt|date:'full'}}</h2>
+  <h2>Pressure : {{wea.list[0].main.pressure}} mb</h2>
+  <h2>Humidity : {{wea.list[0].main.humidity}}%</h2>
+  <h2>Wind : {{wea.list[0].wind.speed}} mph SW</h2>
+  <h2>{{(wea.list[0].main.temp-273).toPrecision(4)}}&deg;</h2>
+  <div class="img">
+     <h3>{{wea.list[0].weather[0].description}}
+     <img src="http://openweathermap.org/img/w/{{wea.list[0].weather[0].icon}}.png">
+    </h3>
+  </div>
+  
+  <h4>Min:  {{(wea.list[0].main.temp_min-273).toPrecision(4)}}&deg;</h4>
+  <h4>Max: {{(wea.list[0].main.temp_max-273).toPrecision(4)}}&deg;</h4>
+</div> -->

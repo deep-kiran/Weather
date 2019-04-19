@@ -2,58 +2,48 @@ import { Component, OnInit } from '@angular/core';
 import { WeatherService } from "src/app/weather.service";
 import { CurrentWeather } from "src/app/current-weather";
 import 'rxjs/Rx';
+import { ICurrentWeather } from "src/app/weatherInterface";
 @Component({
   selector: 'app-current',
   templateUrl: './current.component.html',
   styleUrls: ['./current.component.css']
 })
 export class CurrentComponent implements OnInit {
+  //a: boolean =false
   myWeather: CurrentWeather
   location
-  city: string
+  //city: string
+  public wea: ICurrentWeather[] =  [];
   constructor(private ws: WeatherService) { }
 
   ngOnInit() {
-   //this.myWeather =  this.ws.weatherNow();
-   /*navigator.geolocation.getCurrentPosition((pos)=>{
-     this.location = pos.coords;
-     const lat = this.location.latitude;
-     const lon = this.location.longitude;*/
-     /*this.ws.localWeather(this.city).subscribe(
-       (data)=>{
-         console.log("abc")
-         console.log(data);
-        console.log(data.city.name);
-        console.log( data.list["0"].weather[0].icon);
-         this.myWeather = new CurrentWeather(data.city.name,
-                                             data.list[0].main.temp,
-                                             data.list[0].weather[0].icon,
-                                             data.list[0].weather[0].description,
-                                             data.list[0].main.temp_max,
-                                             data.list[0].main.temp_min)
-       }
-     )*/
+    this.ws.inputClickedEvent.subscribe((data)=>{
+      let city=data.data;
+      this.ws.lw(city).subscribe((data)=>{
+        this.wea = data;
+        this.myWeather = this.ws.weatherconstructor(this.wea,0);
+       // this.a=true;
+        console.log(this.wea)
+    })
+    })
    }
-   WeatherForecast(){
+ /*  WeatherForecast(){
     this.ws.localWeather(this.city).subscribe(
       (data)=>{
         console.log("abc")
         console.log(data);
-       console.log(data.city.name);
-       console.log( data.list["0"].weather[0].icon);
-        this.myWeather = new CurrentWeather(data.list[0].dt_txt,
-                                            data.city.name,
-                                            data.list[0].main.temp,
-                                            data.list[0].weather[0].icon,
-                                            data.list[0].weather[0].description,
-                                            data.list[0].main.temp_max,
-                                            data.list[0].main.temp_min,
-                                            data.list[0].main.pressure,
-                                            data.list[0].main.humidity,
-                                            data.list[0].wind.speed,
-                                            data.city.country)
+    
+          this.myWeather = this.ws.weatherconstructor(data); 
+                                  
       }
     )
-   }
+   }*/
+  /* WeatherForecast(){
+     this.ws.lw(this.city).subscribe((data)=>{
+         this.wea = data;
+         this.a=true;
+         console.log(this.wea)
+     })
+   }*/
 
 }
